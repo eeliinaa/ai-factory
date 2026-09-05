@@ -1,7 +1,18 @@
 from .run import Run, RunContext
 from .candidate import CandidateScore, ResearchCandidate
 from .product import ProductPlan, SelectedProduct
-from .artifact import ArtifactPlanItem, ArtifactRecord
+from .artifact import (
+    ArtifactPlanItem,
+    ArtifactRecord,
+    BundleArtifactSpec,
+    PdfArtifactSection,
+    PdfArtifactSpec,
+    RenderableArtifactPayload,
+    SpreadsheetArtifactSpec,
+    SpreadsheetColumnSpec,
+    SpreadsheetSheetSpec,
+    TextArtifactSpec,
+)
 from .listing import ListingDraft
 from .qa import QaResult
 from .workflow import (
@@ -30,12 +41,15 @@ __all__ = [
     "ArtifactGenerationStatus",
     "ArtifactPlanItem",
     "ArtifactRecord",
+    "BundleArtifactSpec",
     "CandidateScore",
     "EvaluationResponsePayload",
     "EvaluationResult",
     "ListingDraft",
     "ListingResult",
     "PackagingResult",
+    "PdfArtifactSection",
+    "PdfArtifactSpec",
     "ProductArchitectureResponsePayload",
     "ProductArchitectureResult",
     "ProductCreationArtifactPayload",
@@ -45,6 +59,7 @@ __all__ = [
     "ProductType",
     "QaResult",
     "RecommendationStatus",
+    "RenderableArtifactPayload",
     "ResearchCandidate",
     "ResearchResponsePayload",
     "ResearchResult",
@@ -52,6 +67,10 @@ __all__ = [
     "RunContext",
     "RunStatus",
     "SelectedProduct",
+    "SpreadsheetArtifactSpec",
+    "SpreadsheetColumnSpec",
+    "SpreadsheetSheetSpec",
     "StageParseResult",
+    "TextArtifactSpec",
     "WorkflowStage",
 ]

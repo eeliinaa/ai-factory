@@ -1,8 +1,9 @@
+from pathlib import Path
 from typing import Any
 
 from pydantic import BaseModel, Field
 
-from .artifact import ArtifactPlanItem
+from .artifact import ArtifactPlanItem, RenderableArtifactPayload
 from .candidate import CandidateScore, ResearchCandidate
 from .product import ProductPlan
 
@@ -46,7 +47,8 @@ class ProductArchitectureResponsePayload(BaseModel):
 class ProductCreationArtifactPayload(BaseModel):
     artifact_type: str
     file_name: str
-    content: str
+    content: str | None = None
+    render_spec: dict[str, Any] | None = None
 
 
 class ProductCreationResponsePayload(BaseModel):
@@ -77,6 +79,7 @@ class ListingResult(BaseModel):
 class ProductCreationResult(BaseModel):
     plan: ProductPlan
     created_artifacts: list[str] = Field(default_factory=list)
+    renderable_artifacts: list[RenderableArtifactPayload] = Field(default_factory=list)
 
 
 class StageParseResult(BaseModel):

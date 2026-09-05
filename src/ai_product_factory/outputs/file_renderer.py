@@ -1,11 +1,12 @@
 from pathlib import Path
 import re
 
-from ..domain import ArtifactPlanItem, ArtifactRecord, ArtifactGenerationStatus
+from ..domain import ArtifactPlanItem, ArtifactRecord
+from ..renderers import render_artifact_payloads
 
 
 TEXT_RENDERED_EXTENSIONS = {"md", "txt", "json", "csv", "html"}
-UNSUPPORTED_BINARY_EXTENSIONS = {"pdf", "png", "jpg", "jpeg", "zip", "canva"}
+UNSUPPORTED_BINARY_EXTENSIONS = {"png", "jpg", "jpeg", "canva"}
 
 
 def normalize_artifact_file_name(file_name: str) -> str:
@@ -18,8 +19,6 @@ def normalize_artifact_file_name(file_name: str) -> str:
 def validate_artifact_content(item: dict) -> None:
     if not item.get("file_name"):
         raise ValueError("Artifact file_name is required.")
-    if not item.get("content") or not item["content"].strip():
-        raise ValueError(f"Artifact content is empty for {item['file_name']}")
 
 
 def resolve_render_target(file_name: str, declared_format: str | None) -> tuple[str, str]:
@@ -33,33 +32,16 @@ def resolve_render_target(file_name: str, declared_format: str | None) -> tuple[
     if requested_format in UNSUPPORTED_BINARY_EXTENSIONS:
         return f"{normalized_name}.md", "md"
 
-    if suffix in TEXT_RENDERED_EXTENSIONS:
-        return normalized_name, suffix
-
-    return f"{normalized_name}.txt", "txt"
+    return normalized_name, requested_format
 
 
-def render_artifacts(output_dir: Path, artifact_contents: list[dict]) -> list[ArtifactRecord]:
+def render_artifacts(output_dir: Path, artifact_contents: list[dict], artifact_plan: list[ArtifactPlanItem] | None = None) -> list[ArtifactRecord]:
     output_dir.mkdir(parents=True, exist_ok=True)
-    artifact_records: list[ArtifactRecord] = []
-
-    for item in artifact_contents:
-        validate_artifact_content(item)
-        render_name, rendered_format = resolve_render_target(item["file_name"], item.get("file_format"))
-        file_path = output_dir / render_name
-        file_path.parent.mkdir(parents=True, exist_ok=True)
-        file_path.write_text(item["content"], encoding="utf-8")
-        artifact_records.append(
-            ArtifactRecord(
-                artifact_type=item["artifact_type"],
-                file_path=file_path,
-                file_format=rendered_format,
-                is_required=item.get("is_required", True),
-                generation_status=ArtifactGenerationStatus.GENERATED,
-            )
-        )
-
-    return artifact_records
+    artifact_requirements = {
+        item.artifact_type: item.is_required
+        for item in (artifact_plan or [])
+    }
+    return render_artifact_payloads(output_dir, artifact_contents, artifact_requirements)
 
 
 

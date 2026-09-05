@@ -1,0 +1,44 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+.venv/
+venv/
+env/
+ENV/
+
+# Packaging / build
+build/
+dist/
+*.egg-info/
+.eggs/
+
+# Test / coverage
+.pytest_cache/
+.coverage
+.coverage.*
+htmlcov/
+
+# Tooling
+.ruff_cache/
+.mypy_cache/
+
+# Environment files
+.env
+.env.*
+
+# OS / editor
+.DS_Store
+.vscode/
+.idea/
+
+# Project runtime data
+mix/context/ai-project-factory/data/runs/
+mix/context/ai-project-factory/data/sqlite/
+
+# Local logs and temp files
+*.log
+tmp/
+temp/

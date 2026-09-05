@@ -3,15 +3,29 @@ from pathlib import Path
 from ..domain import ArtifactRecord
 
 
+BINARY_FORMATS = {"pdf", "xlsx", "zip", "png", "jpg", "jpeg"}
+
+
 def validate_artifact_records(artifacts: list[ArtifactRecord]) -> list[str]:
     findings: list[str] = []
     for artifact in artifacts:
-        if not Path(artifact.file_path).exists():
+        path = Path(artifact.file_path)
+
+        if not path.exists():
             findings.append(f"Missing artifact file: {artifact.file_path}")
             continue
-        if Path(artifact.file_path).suffix.replace(".", "") != artifact.file_format:
+
+        if path.suffix.replace(".", "").lower() != artifact.file_format:
             findings.append(f"Format mismatch for artifact: {artifact.file_path}")
-        content = Path(artifact.file_path).read_text(encoding="utf-8")
+            continue
+
+        if artifact.file_format in BINARY_FORMATS:
+            if path.stat().st_size <= 0:
+                findings.append(f"Empty artifact file: {artifact.file_path}")
+            continue
+
+        content = path.read_text(encoding="utf-8")
         if not content.strip():
             findings.append(f"Empty artifact file: {artifact.file_path}")
+
     return findings

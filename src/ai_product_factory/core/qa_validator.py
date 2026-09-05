@@ -1,7 +1,7 @@
 from pathlib import Path
 
 from ..domain import ArtifactPlanItem, ArtifactRecord, QaResult
-from ..outputs.file_renderer import resolve_render_target
+from ..renderers.pathing import resolve_render_target
 
 
 class QaValidator:
@@ -55,6 +55,13 @@ class QaValidator:
                 message = f"Artifact file missing on disk: {file_path}"
                 findings.append(message)
                 technical_findings.append(message)
+                continue
+
+            if artifact.file_format in {"pdf", "xlsx", "zip"}:
+                if file_path.stat().st_size <= 0:
+                    message = f"Artifact binary file is empty: {file_path}"
+                    findings.append(message)
+                    technical_findings.append(message)
                 continue
 
             if not file_path.read_text(encoding="utf-8").strip():

@@ -1,18 +1,18 @@
 {
-  "generated_at": "2026-09-05T09:26:55.224128",
+  "generated_at": "2026-09-05T17:38:57.689660",
   "total_runs": 1,
-  "completed_runs": 1,
-  "failed_runs": 0,
+  "completed_runs": 0,
+  "failed_runs": 1,
   "results": [
     {
       "topic": "wedding checklists",
-      "status": "completed",
-      "selected_product": "Editable 30-Week Wedding Planner & Timeline Checklist Bundle \u2014 Fillable PDF + Excel/Google Sheets",
+      "status": "failed",
+      "selected_product": "Editable Wedding Planner Bundle",
       "selected_product_type": "TEMPLATE_BUNDLE",
-      "total_cost": 0.059623999999999996,
+      "total_cost": 0.0,
       "output_path": "data/runs/run_wedding_checklists",
       "report_path": "data/runs/run_wedding_checklists/run-report.json",
-      "failure_reason": null
+      "failure_reason": "Technical QA validation failed."
     }
   ]
 }

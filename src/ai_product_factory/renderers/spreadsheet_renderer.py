@@ -4,12 +4,11 @@ from openpyxl import Workbook
 from openpyxl.styles import Font
 
 from ..domain import SpreadsheetArtifactSpec
-from ..outputs.file_renderer import normalize_artifact_file_name
+from .pathing import artifact_output_path
 
 
 def render_spreadsheet_artifact(output_dir: Path, file_name: str, spec: SpreadsheetArtifactSpec) -> tuple[Path, str]:
-    normalized_name = normalize_artifact_file_name(file_name)
-    file_path = output_dir / normalized_name
+    file_path, rendered_format = artifact_output_path(output_dir, file_name, "xlsx")
     file_path.parent.mkdir(parents=True, exist_ok=True)
 
     workbook = Workbook()
@@ -34,4 +33,4 @@ def render_spreadsheet_artifact(output_dir: Path, file_name: str, spec: Spreadsh
         worksheet.freeze_panes = "A2"
 
     workbook.save(file_path)
-    return file_path, "xlsx"
+    return file_path, rendered_format

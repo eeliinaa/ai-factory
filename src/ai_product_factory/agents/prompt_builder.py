@@ -1,7 +1,6 @@
 import json
 
-from .domain import ArtifactPlanItem
-from .providers import OpenAIProvider
+from ..domain import ArtifactPlanItem
 
 
 class PromptBuilder:
@@ -17,14 +16,13 @@ class PromptBuilder:
                 {
                     "id": "candidate-1",
                     "title": "string",
-                    "product_type": "TEMPLATE_BUNDLE",
-                    "target_customer": "string",
                     "problem_statement": "string",
-                    "solution_summary": "string",
-                    "why_now": "string",
-                    "price_anchor": "string",
-                    "differentiation": "string",
-                    "research_notes": ["string"],
+                    "target_audience": "string",
+                    "product_angle": "string",
+                    "evidence_summary": "string",
+                    "estimated_price_range": "string",
+                    "estimated_build_speed": "string",
+                    "series_potential_note": "string",
                 }
             ],
         }
@@ -153,4 +151,4 @@ class PromptBuilder:
         return system_prompt, user_prompt
 
 
-__all__ = ["PromptBuilder", "OpenAIProvider"]
+__all__ = ["PromptBuilder"]

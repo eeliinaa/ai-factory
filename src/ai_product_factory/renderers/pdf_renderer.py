@@ -5,7 +5,7 @@ from reportlab.lib.styles import getSampleStyleSheet
 from reportlab.platypus import ListFlowable, ListItem, Paragraph, SimpleDocTemplate, Spacer
 
 from ..domain import PdfArtifactSpec
-from ..outputs.file_renderer import normalize_artifact_file_name
+from .pathing import artifact_output_path
 
 
 PAGE_SIZES = {
@@ -16,8 +16,7 @@ PAGE_SIZES = {
 
 
 def render_pdf_artifact(output_dir: Path, file_name: str, spec: PdfArtifactSpec) -> tuple[Path, str]:
-    normalized_name = normalize_artifact_file_name(file_name)
-    file_path = output_dir / normalized_name
+    file_path, rendered_format = artifact_output_path(output_dir, file_name, "pdf")
     file_path.parent.mkdir(parents=True, exist_ok=True)
 
     page_size = PAGE_SIZES.get(spec.page_size.lower(), LETTER)
@@ -40,4 +39,4 @@ def render_pdf_artifact(output_dir: Path, file_name: str, spec: PdfArtifactSpec)
             story.append(Spacer(1, 12))
 
     document.build(story)
-    return file_path, "pdf"
+    return file_path, rendered_format

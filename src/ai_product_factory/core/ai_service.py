@@ -28,12 +28,37 @@ class AIService:
         if require_json and attempt > 1:
             attempt_objective = f"{attempt_objective} Return only valid JSON matching the required schema exactly."
 
-        system_prompt, user_prompt = self.prompt_builder.build(
-            stage=stage,
-            topic=topic,
-            context_text=context_text,
-            objective=attempt_objective,
-        )
+        if stage == WorkflowStage.RESEARCH:
+            system_prompt, user_prompt = self.prompt_builder.build_research_prompt(topic, context_text, attempt=attempt)
+        elif stage == WorkflowStage.EVALUATION:
+            system_prompt, user_prompt = self.prompt_builder.build_evaluation_prompt(
+                topic,
+                context_text,
+                candidates_payload=[],
+                attempt=attempt,
+            )
+        elif stage == WorkflowStage.PRODUCT_ARCHITECTURE:
+            system_prompt, user_prompt = self.prompt_builder.build_product_architecture_prompt(
+                topic,
+                context_text,
+                selected_candidate={},
+                attempt=attempt,
+            )
+        elif stage == WorkflowStage.PRODUCT_CREATION:
+            system_prompt, user_prompt = self.prompt_builder.build_product_creation_prompt(
+                topic,
+                context_text,
+                artifact_plan=[],
+                attempt=attempt,
+            )
+        else:
+            system_prompt = f"You are supporting the {stage.value} stage."
+            user_prompt = (
+                f"Topic: {topic}\n"
+                f"Objective: {attempt_objective}\n\n"
+                f"Context:\n{context_text}"
+            )
+
         request = LLMRequest(
             stage_name=stage.value,
             system_prompt=system_prompt,

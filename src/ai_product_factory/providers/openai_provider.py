@@ -1,39 +1,49 @@
 import json
 
-from ..core import LLMResponse, ProviderRequest
+from .base import LLMProvider, LLMRequest, LLMResponse
 
 
-class OpenAIProvider:
-    def complete(self, request: ProviderRequest) -> LLMResponse:
+class OpenAIProvider(LLMProvider):
+    def __init__(
+        self,
+        api_key: str | None = None,
+        base_url: str | None = None,
+        timeout_seconds: float | int | None = None,
+        allow_placeholder_fallback: bool = True,
+    ) -> None:
+        self.api_key = api_key
+        self.base_url = base_url
+        self.timeout_seconds = timeout_seconds
+        self.allow_placeholder_fallback = allow_placeholder_fallback
+
+    def generate(self, request: LLMRequest) -> LLMResponse:
         if request.stage_name == "research":
             content = json.dumps(
                 {
-                    "evidence_summary": "Buyers want compact, editable planning systems that reduce wedding-planning overwhelm.",
+                    "evidence_summary": "Buyers want compact, editable planning systems that reduce planning overwhelm.",
                     "candidates": [
                         {
                             "id": "candidate-1",
                             "title": "Editable Wedding Planner Bundle",
-                            "product_type": "TEMPLATE_BUNDLE",
-                            "target_customer": "Engaged couples planning their own wedding",
                             "problem_statement": "Couples need a clear timeline, checklist, and vendor tracker in one place.",
-                            "solution_summary": "Provide an editable wedding-planning bundle with printable and spreadsheet-based assets.",
-                            "why_now": "Digital wedding planning tools remain in demand due to convenience and instant download expectations.",
-                            "price_anchor": "$9-$19",
-                            "differentiation": "Simple but structured planner with editable spreadsheet support.",
-                            "research_notes": ["Checklist bundles perform well", "Editable planners increase perceived value"],
+                            "target_audience": "Engaged couples planning their own wedding",
+                            "product_angle": "Editable printable planner bundle with spreadsheet support",
+                            "evidence_summary": "Checklist-style wedding planners are attractive because they simplify a complex planning process.",
+                            "estimated_price_range": "$9-$19",
+                            "estimated_build_speed": "fast",
+                            "series_potential_note": "Can expand into bridal party, timeline, and vendor-specific companion products.",
                         },
                         {
                             "id": "candidate-2",
                             "title": "Wedding Emergency Kit Checklist",
-                            "product_type": "TEMPLATE_BUNDLE",
-                            "target_customer": "Couples and planners needing day-of readiness",
                             "problem_statement": "Buyers want to avoid last-minute wedding-day problems.",
-                            "solution_summary": "Provide a printable emergency checklist and vendor contact pack.",
-                            "why_now": "Day-of organization tools stay relevant year-round.",
-                            "price_anchor": "$6-$12",
-                            "differentiation": "Focused urgency-driven checklist bundle.",
-                            "research_notes": ["Low complexity", "Good add-on bundle potential"],
-                        },
+                            "target_audience": "Couples and coordinators preparing for the wedding day",
+                            "product_angle": "Compact printable emergency checklist bundle",
+                            "evidence_summary": "Day-of preparedness checklists are easy to understand and suitable as add-on digital products.",
+                            "estimated_price_range": "$6-$12",
+                            "estimated_build_speed": "fast",
+                            "series_potential_note": "Can be extended with reception, vendor, and ceremony troubleshooting add-ons.",
+                        }
                     ],
                 }
             )
@@ -209,5 +219,6 @@ class OpenAIProvider:
                 "prompt_version": request.prompt_version,
                 "cost_estimation": "none",
                 "require_json": request.require_json,
+                "allow_placeholder_fallback": self.allow_placeholder_fallback,
             },
         )

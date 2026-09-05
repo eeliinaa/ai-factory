@@ -1,8 +1,9 @@
 from .batch_report import write_batch_summary
-from .file_renderer import artifact_plan_to_manifest, normalize_artifact_file_name, render_artifacts, validate_artifact_content
+from .file_renderer import artifact_plan_to_manifest, render_artifacts, validate_artifact_content
 from .package_builder import build_output_package
 from .run_report import write_run_report
 from .validators import validate_artifact_records
+from ..renderers.pathing import normalize_artifact_file_name
 
 __all__ = [
     "artifact_plan_to_manifest",

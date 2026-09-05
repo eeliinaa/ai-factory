@@ -1,70 +1,43 @@
 import json
 
-from ..domain import ArtifactPlanItem, SelectedProduct, WorkflowStage
+from .domain import ArtifactPlanItem
+from .providers import OpenAIProvider
 
 
 class PromptBuilder:
-    def build(self, stage: WorkflowStage, topic: str, context_text: str, objective: str) -> tuple[str, str]:
-        system_prompt = (
-            "You are an AI product development assistant. "
-            "Use the provided project context and follow the workflow stage objective carefully."
-        )
-        user_prompt = (
-            f"Stage: {stage.value}\n"
-            f"Topic: {topic}\n"
-            f"Objective: {objective}\n\n"
-            f"Context:\n{context_text}\n"
-        )
-        return system_prompt, user_prompt
-
     def json_enforcement_suffix(self, attempt: int) -> str:
         if attempt <= 1:
-            return "Return only valid JSON."
-        return "Return only valid JSON matching the schema exactly. No markdown. No commentary. No extra keys."
+            return "Return exactly one valid JSON object."
+        return "Return exactly one valid JSON object. Do not include markdown fences, commentary, or trailing text."
 
     def build_research_prompt(self, topic: str, context_text: str, attempt: int = 1) -> tuple[str, str]:
-        objective = (
-            "Identify exactly 3 viable Etsy-suitable digital product opportunities with strong speed, "
-            "practical value, and series potential."
-        )
         schema = {
             "evidence_summary": "string",
             "candidates": [
                 {
                     "id": "candidate-1",
                     "title": "string",
+                    "product_type": "TEMPLATE_BUNDLE",
+                    "target_customer": "string",
                     "problem_statement": "string",
-                    "target_audience": "string",
-                    "product_angle": "string",
-                    "evidence_summary": "string",
-                    "estimated_price_range": "string",
-                    "estimated_build_speed": "string",
-                    "series_potential_note": "string",
+                    "solution_summary": "string",
+                    "why_now": "string",
+                    "price_anchor": "string",
+                    "differentiation": "string",
+                    "research_notes": ["string"],
                 }
             ],
         }
-        system_prompt = (
-            "You are a product opportunity research assistant. "
-            "Return only valid JSON and no markdown fences."
-        )
+        system_prompt = "You are a product research assistant. Return only valid JSON and no markdown fences."
         user_prompt = (
             f"Topic: {topic}\n"
-            f"Objective: {objective} {self.json_enforcement_suffix(attempt)}\n\n"
+            f"Objective: Research viable Etsy-style digital product opportunities. {self.json_enforcement_suffix(attempt)}\n\n"
             f"Context:\n{context_text}\n\n"
             f"Required JSON schema:\n{json.dumps(schema, indent=2)}"
         )
         return system_prompt, user_prompt
 
-    def build_evaluation_prompt(
-        self,
-        topic: str,
-        context_text: str,
-        candidates_payload: str | list[dict],
-        attempt: int = 1,
-    ) -> tuple[str, str]:
-        objective = (
-            "Evaluate the provided candidates, select one best option, identify backups and rejected options."
-        )
+    def build_evaluation_prompt(self, topic: str, context_text: str, candidates_payload, attempt: int = 1) -> tuple[str, str]:
         schema = {
             "selected_candidate_id": "candidate-1",
             "backup_candidate_ids": ["candidate-2"],
@@ -72,9 +45,9 @@ class PromptBuilder:
             "scores": [
                 {
                     "candidate_id": "candidate-1",
-                    "demand_score": 7.5,
-                    "competition_score": 6.0,
-                    "production_speed_score": 8.5,
+                    "demand_score": 8.0,
+                    "competition_score": 7.0,
+                    "production_speed_score": 8.0,
                     "price_potential_score": 7.0,
                     "series_potential_score": 8.0,
                     "automation_fit_score": 8.0,
@@ -92,7 +65,7 @@ class PromptBuilder:
         )
         user_prompt = (
             f"Topic: {topic}\n"
-            f"Objective: {objective} {self.json_enforcement_suffix(attempt)}\n\n"
+            f"Objective: {self.json_enforcement_suffix(attempt)}\n\n"
             f"Context:\n{context_text}\n\n"
             f"Candidates JSON:\n{payload_text}\n\n"
             f"Required JSON schema:\n{json.dumps(schema, indent=2)}"
@@ -103,7 +76,7 @@ class PromptBuilder:
         self,
         topic: str,
         context_text: str,
-        selected_candidate: SelectedProduct | dict,
+        selected_candidate,
         attempt: int = 1,
     ) -> tuple[str, str]:
         candidate_payload = (
@@ -153,18 +126,31 @@ class PromptBuilder:
                     "artifact_type": "string",
                     "file_name": "string",
                     "content": "string",
+                    "render_spec": {
+                        "kind": "text | pdf | spreadsheet | bundle",
+                    },
                 }
             ]
         }
         system_prompt = (
             "You are a digital product creation assistant. "
-            "Return only valid JSON and no markdown fences."
+            "Return only valid JSON and no markdown fences. "
+            "For pdf, xlsx, and zip outputs, populate render_spec with structured fields instead of pretending to return binary file contents. "
+            "Use content only for plain text-like artifacts such as md, txt, or json."
         )
         user_prompt = (
             f"Topic: {topic}\n"
             f"Objective: Create the first draft content for each planned artifact. {self.json_enforcement_suffix(attempt)}\n\n"
             f"Context:\n{context_text}\n\n"
             f"Artifact plan JSON:\n{json.dumps([item.model_dump() for item in artifact_plan], indent=2)}\n\n"
+            "Rendering instructions:\n"
+            "- For md/txt/json artifacts: set render_spec.kind='text' and provide final content in render_spec.content.\n"
+            "- For pdf artifacts: set render_spec.kind='pdf' and provide a title plus structured sections with heading, body, and bullet_points.\n"
+            "- For xlsx artifacts: set render_spec.kind='spreadsheet' and provide workbook_title plus sheets with name, columns, and rows.\n"
+            "- For zip artifacts: set render_spec.kind='bundle'. Do not attempt to provide fake zip bytes or markdown placeholders.\n\n"
             f"Required JSON schema:\n{json.dumps(schema, indent=2)}"
         )
         return system_prompt, user_prompt
+
+
+__all__ = ["PromptBuilder", "OpenAIProvider"]

@@ -1,108 +1,38 @@
 import json
 
-from openai import OpenAI
-
-from ..core.errors import ProviderError
-from .base import LLMProvider, LLMRequest, LLMResponse
-from .pricing import estimate_cost
+from ..core import LLMResponse, ProviderRequest
 
 
-class OpenAIProvider(LLMProvider):
-    def __init__(
-        self,
-        api_key: str | None = None,
-        base_url: str | None = None,
-        timeout_seconds: float = 180.0,
-        allow_placeholder_fallback: bool = True,
-    ) -> None:
-        self.api_key = api_key
-        self.allow_placeholder_fallback = allow_placeholder_fallback
-        self.client = (
-            OpenAI(api_key=api_key, base_url=base_url, timeout=timeout_seconds) if api_key else None
-        )
-
-    def generate(self, request: LLMRequest) -> LLMResponse:
-        if self.client is None:
-            if self.allow_placeholder_fallback:
-                return self._placeholder_response(request)
-            raise ProviderError("OPENAI_API_KEY is not configured and placeholder fallback is disabled.")
-
-        try:
-            payload = {
-                "model": request.model,
-                "input": [
-                    {"role": "system", "content": request.system_prompt},
-                    {"role": "user", "content": request.user_prompt},
-                ],
-            }
-
-            if request.require_json:
-                payload["text"] = {"format": {"type": "json_object"}}
-
-            response = self.client.responses.create(**payload)
-        except Exception as exc:
-            raise ProviderError(f"OpenAI API call failed: {exc}") from exc
-
-        content = getattr(response, "output_text", "") or ""
-        usage = getattr(response, "usage", None)
-        prompt_tokens = getattr(usage, "input_tokens", 0) if usage else 0
-        completion_tokens = getattr(usage, "output_tokens", 0) if usage else 0
-        estimated_cost, cost_mode = estimate_cost(request.model, prompt_tokens, completion_tokens)
-
-        return LLMResponse(
-            model=getattr(response, "model", request.model),
-            content=content,
-            prompt_tokens=prompt_tokens,
-            completion_tokens=completion_tokens,
-            estimated_cost=estimated_cost,
-            metadata={
-                "provider": "openai",
-                "mode": "live",
-                "stage_name": request.stage_name,
-                "prompt_version": request.prompt_version,
-                "cost_estimation": cost_mode,
-                "require_json": request.require_json,
-            },
-        )
-
-    def _placeholder_response(self, request: LLMRequest) -> LLMResponse:
+class OpenAIProvider:
+    def complete(self, request: ProviderRequest) -> LLMResponse:
         if request.stage_name == "research":
             content = json.dumps(
                 {
-                    "evidence_summary": "Placeholder structured research output for MVP pipeline development.",
+                    "evidence_summary": "Buyers want compact, editable planning systems that reduce wedding-planning overwhelm.",
                     "candidates": [
                         {
                             "id": "candidate-1",
-                            "title": "Professional Workflow Toolkit",
-                            "problem_statement": "Professionals need repeatable systems for planning and delivery.",
-                            "target_audience": "Knowledge workers and freelancers",
-                            "product_angle": "Reusable templates and worksheets for recurring workflows",
-                            "evidence_summary": "Strong practical utility and easy digital packaging.",
-                            "estimated_price_range": "$12-$24",
-                            "estimated_build_speed": "fast",
-                            "series_potential_note": "Expandable into niche workflow bundles.",
+                            "title": "Editable Wedding Planner Bundle",
+                            "product_type": "TEMPLATE_BUNDLE",
+                            "target_customer": "Engaged couples planning their own wedding",
+                            "problem_statement": "Couples need a clear timeline, checklist, and vendor tracker in one place.",
+                            "solution_summary": "Provide an editable wedding-planning bundle with printable and spreadsheet-based assets.",
+                            "why_now": "Digital wedding planning tools remain in demand due to convenience and instant download expectations.",
+                            "price_anchor": "$9-$19",
+                            "differentiation": "Simple but structured planner with editable spreadsheet support.",
+                            "research_notes": ["Checklist bundles perform well", "Editable planners increase perceived value"],
                         },
                         {
                             "id": "candidate-2",
-                            "title": "Client Onboarding Template Pack",
-                            "problem_statement": "Freelancers lose time onboarding clients manually.",
-                            "target_audience": "Freelancers and solo service providers",
-                            "product_angle": "Streamlined onboarding documents and checklists",
-                            "evidence_summary": "Simple to produce and clear buyer outcome.",
-                            "estimated_price_range": "$14-$28",
-                            "estimated_build_speed": "fast",
-                            "series_potential_note": "Can branch into industry-specific onboarding kits.",
-                        },
-                        {
-                            "id": "candidate-3",
-                            "title": "Weekly Planning Dashboard Bundle",
-                            "problem_statement": "Busy professionals struggle to prioritize weekly work.",
-                            "target_audience": "Remote workers and managers",
-                            "product_angle": "Planning sheets and review templates for weekly execution",
-                            "evidence_summary": "Broad demand and repeatable design pattern.",
-                            "estimated_price_range": "$10-$22",
-                            "estimated_build_speed": "fast",
-                            "series_potential_note": "Can expand into monthly and quarterly planning systems.",
+                            "title": "Wedding Emergency Kit Checklist",
+                            "product_type": "TEMPLATE_BUNDLE",
+                            "target_customer": "Couples and planners needing day-of readiness",
+                            "problem_statement": "Buyers want to avoid last-minute wedding-day problems.",
+                            "solution_summary": "Provide a printable emergency checklist and vendor contact pack.",
+                            "why_now": "Day-of organization tools stay relevant year-round.",
+                            "price_anchor": "$6-$12",
+                            "differentiation": "Focused urgency-driven checklist bundle.",
+                            "research_notes": ["Low complexity", "Good add-on bundle potential"],
                         },
                     ],
                 }
@@ -112,43 +42,31 @@ class OpenAIProvider(LLMProvider):
                 {
                     "selected_candidate_id": "candidate-1",
                     "backup_candidate_ids": ["candidate-2"],
-                    "rejected_candidate_ids": ["candidate-3"],
+                    "rejected_candidate_ids": [],
                     "scores": [
                         {
                             "candidate_id": "candidate-1",
-                            "demand_score": 7.5,
-                            "competition_score": 6.0,
-                            "production_speed_score": 8.5,
+                            "demand_score": 8.0,
+                            "competition_score": 6.5,
+                            "production_speed_score": 8.0,
                             "price_potential_score": 7.0,
                             "series_potential_score": 8.0,
                             "automation_fit_score": 8.0,
-                            "weighted_final_score": 7.5,
+                            "weighted_final_score": 7.6,
                             "recommendation_status": "selected",
-                            "risk_notes": "Balanced opportunity with strong execution speed.",
+                            "risk_notes": "Balanced complexity and value for a first bundle.",
                         },
                         {
                             "candidate_id": "candidate-2",
                             "demand_score": 7.0,
-                            "competition_score": 6.5,
-                            "production_speed_score": 8.0,
-                            "price_potential_score": 7.0,
-                            "series_potential_score": 7.5,
-                            "automation_fit_score": 7.5,
-                            "weighted_final_score": 7.25,
-                            "recommendation_status": "backup",
-                            "risk_notes": "Good offer, but slightly narrower market.",
-                        },
-                        {
-                            "candidate_id": "candidate-3",
-                            "demand_score": 6.5,
                             "competition_score": 6.0,
                             "production_speed_score": 8.0,
                             "price_potential_score": 6.5,
                             "series_potential_score": 7.0,
                             "automation_fit_score": 7.0,
-                            "weighted_final_score": 6.83,
-                            "recommendation_status": "rejected",
-                            "risk_notes": "Usable but less differentiated than the leading option.",
+                            "weighted_final_score": 6.9,
+                            "recommendation_status": "backup",
+                            "risk_notes": "Simpler product but slightly lower perceived value.",
                         },
                     ],
                     "failure_reason": None,
@@ -158,35 +76,43 @@ class OpenAIProvider(LLMProvider):
             content = json.dumps(
                 {
                     "product_type": "TEMPLATE_BUNDLE",
-                    "product_title": "Professional Workflow Toolkit",
-                    "product_summary": "A practical bundle of reusable workflow templates for planning and delivery.",
-                    "buyer_problem": "Professionals need repeatable systems for planning and delivery.",
-                    "solution_promise": "Help buyers save time with reusable workflow assets.",
-                    "packaging_strategy": "Bundle a planning template, execution worksheet, and buyer guide.",
+                    "product_title": "Editable Wedding Planner Bundle",
+                    "product_summary": "A printable and editable wedding planning kit with timeline, checklist, and vendor tracker.",
+                    "buyer_problem": "Couples need one planning system that is easy to customize and print.",
+                    "solution_promise": "Deliver a compact bundle with clear planning pages plus spreadsheet support.",
+                    "packaging_strategy": "Bundle printable PDFs, an editable spreadsheet, and buyer instructions in a ZIP.",
                     "artifact_plan": [
                         {
-                            "artifact_type": "planning_template",
-                            "file_name": "planning-template.md",
-                            "file_format": "md",
-                            "purpose": "Help the buyer define weekly priorities and milestones.",
+                            "artifact_type": "planner_pdf",
+                            "file_name": "wedding-planner.pdf",
+                            "file_format": "pdf",
+                            "purpose": "Main printable planner.",
                             "is_required": True,
-                            "generation_instructions": "Create a concise planning template with headings and fillable prompts.",
+                            "generation_instructions": "Create a printable wedding planning PDF with timeline and checklist sections.",
                         },
                         {
-                            "artifact_type": "execution_worksheet",
-                            "file_name": "execution-worksheet.md",
-                            "file_format": "md",
-                            "purpose": "Support daily execution and tracking.",
+                            "artifact_type": "vendor_sheet",
+                            "file_name": "vendor-tracker.xlsx",
+                            "file_format": "xlsx",
+                            "purpose": "Editable vendor tracking spreadsheet.",
                             "is_required": True,
-                            "generation_instructions": "Create a worksheet with task sections, blockers, and review prompts.",
+                            "generation_instructions": "Create a workbook with vendor, contact, budget, and due-date tracking.",
                         },
                         {
                             "artifact_type": "buyer_guide",
-                            "file_name": "buyer-guide.md",
+                            "file_name": "how_to_use.md",
                             "file_format": "md",
-                            "purpose": "Explain how to use the toolkit effectively.",
+                            "purpose": "Buyer instructions.",
                             "is_required": True,
-                            "generation_instructions": "Write a short usage guide with setup and workflow steps.",
+                            "generation_instructions": "Write a short buyer guide explaining the files and usage.",
+                        },
+                        {
+                            "artifact_type": "final_bundle_zip",
+                            "file_name": "editable-wedding-planner-bundle.zip",
+                            "file_format": "zip",
+                            "purpose": "Final delivery bundle.",
+                            "is_required": True,
+                            "generation_instructions": "Package all deliverables into a ZIP.",
                         },
                     ],
                 }
@@ -196,20 +122,74 @@ class OpenAIProvider(LLMProvider):
                 {
                     "created_artifacts": [
                         {
-                            "artifact_type": "planning_template",
-                            "file_name": "planning-template.md",
-                            "content": "# Planning Template\n\n## Weekly Goals\n- Goal 1\n- Goal 2\n\n## Priorities\n- Priority A\n- Priority B\n",
+                            "artifact_type": "planner_pdf",
+                            "file_name": "wedding-planner.pdf",
+                            "render_spec": {
+                                "kind": "pdf",
+                                "title": "Editable Wedding Planner",
+                                "page_size": "letter",
+                                "sections": [
+                                    {
+                                        "heading": "Timeline Overview",
+                                        "body": "Use this section to map major planning milestones across the engagement period.",
+                                        "bullet_points": [
+                                            "Set wedding date and venue shortlist",
+                                            "Confirm budget priorities",
+                                            "Book core vendors"
+                                        ]
+                                    },
+                                    {
+                                        "heading": "Weekly Checklist",
+                                        "body": "Review progress weekly and check off completed planning tasks.",
+                                        "bullet_points": [
+                                            "Guest list updates",
+                                            "Vendor confirmations",
+                                            "Payment due dates"
+                                        ]
+                                    }
+                                ]
+                            }
                         },
                         {
-                            "artifact_type": "execution_worksheet",
-                            "file_name": "execution-worksheet.md",
-                            "content": "# Execution Worksheet\n\n## Today's Focus\n-\n\n## Blockers\n-\n\n## End-of-Day Review\n- Wins\n- Improvements\n",
+                            "artifact_type": "vendor_sheet",
+                            "file_name": "vendor-tracker.xlsx",
+                            "render_spec": {
+                                "kind": "spreadsheet",
+                                "workbook_title": "Vendor Tracker",
+                                "sheets": [
+                                    {
+                                        "name": "Vendors",
+                                        "columns": [
+                                            {"header": "Vendor", "width": 24},
+                                            {"header": "Category", "width": 18},
+                                            {"header": "Contact", "width": 28},
+                                            {"header": "Budget", "width": 14},
+                                            {"header": "Due Date", "width": 16}
+                                        ],
+                                        "rows": [
+                                            ["Photographer", "Photo", "hello@example.com", "$1800", "2026-11-01"],
+                                            ["Florist", "Flowers", "florals@example.com", "$900", "2026-10-15"]
+                                        ]
+                                    }
+                                ]
+                            }
                         },
                         {
                             "artifact_type": "buyer_guide",
-                            "file_name": "buyer-guide.md",
-                            "content": "# Buyer Guide\n\nUse the planning template at the start of the week, the worksheet daily, and review progress at the end of each cycle.\n",
+                            "file_name": "how_to_use.md",
+                            "render_spec": {
+                                "kind": "text",
+                                "content": "# How to Use\n\n1. Print the planner PDF or fill it in digitally.\n2. Update the vendor spreadsheet with real contacts and payment dates.\n3. Keep the ZIP together so all planning files stay in one place.\n"
+                            }
                         },
+                        {
+                            "artifact_type": "final_bundle_zip",
+                            "file_name": "editable-wedding-planner-bundle.zip",
+                            "render_spec": {
+                                "kind": "bundle",
+                                "notes": "Packaging step will assemble the final ZIP from rendered artifacts."
+                            }
+                        }
                     ]
                 }
             )

@@ -26,6 +26,7 @@ from .domain import (
     ProductPlan,
     ProductType,
     QaResult,
+    RenderableArtifactPayload,
     ResearchResponsePayload,
     ResearchResult,
     RunContext,
@@ -238,9 +239,14 @@ class PipelineRunner:
             state,
         )
         creation_payload = ProductCreationResponsePayload.model_validate(payload)
+        renderable_artifacts = [
+            RenderableArtifactPayload.model_validate(item)
+            for item in payload.get("renderable_artifacts", [])
+        ]
         artifacts = render_artifacts(
             state.output_root,
-            [artifact.model_dump() for artifact in creation_payload.created_artifacts],
+            renderable_artifacts,
+            architecture.artifact_plan,
         )
         selected_product = SelectedProduct(
             candidate_id=selected_candidate_id,
@@ -255,6 +261,7 @@ class PipelineRunner:
             ProductCreationResult(
                 plan=architecture.plan,
                 created_artifacts=[str(artifact.file_path) for artifact in artifacts],
+                renderable_artifacts=renderable_artifacts,
             ),
             selected_product,
             artifacts,
@@ -322,7 +329,7 @@ class PipelineRunner:
             topic=state.topic,
             context_text=state.context_text,
             objective=(
-                "Draft Etsy listing copy for the selected product. Keep the listing tightly aligned to the selected product title, summary, buyer problem, solution promise, and generated artifacts. "
+                "Draft Etsy listing copy for the selected product. Keep the listing tightly aligned to the selected product title, summary, buyer problem, solution promise, and generated artifact list. "
                 "Do not switch to a generic wedding planning bundle or mention deliverables that are not in the generated artifact list."
             ),
             prompt_version="listing-v2",

@@ -1,0 +1,2 @@
+PLACEHOLDER PNG: Primary thumbnail mockup (2000x1333)
+Design notes for final image: Single-page mockup of printed week-of checklist on neutral background. Overlay text: 'Week-of & Day-of Wedding Checklist • Printable + Editable'. Use high-contrast readable type. Provide layered PSD or Replace with designer-produced PNG of recommended dimensions.

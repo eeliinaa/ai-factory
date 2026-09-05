@@ -1,0 +1,14 @@
+Vendor Contacts Template (sheet 1: 'Vendors')
+Columns: Vendor Name | Role (dropdown) | Primary Contact | Backup Contact | Email | Arrival Time | Payment Due | Notes | Contract Link
+Example row:
+'Blue River Catering', 'Caterer', '+1-555-0123', '+1-555-0456', 'catering@blueriver.com', '16:00', 'Final balance due on 2026-06-01', 'Vegetarian menu confirmed', 'https://example.com/contract.pdf'
+
+Data validation notes: Role dropdown values: Caterer; Photographer; Videographer; Florist; DJ; Officiant; Venue; Hair/Makeup; Transportation; Rentals; Baker; Other
+Phone column hint: Use international format +country-phone
+
+Sheet 2: 'Instructions' (hidden by default)
+- How to use: Replace example rows with your vendor info.
+- To share in Google Sheets: File → Upload → Open in Google Sheets → File → Make a copy.
+- Recommended sharing: Give 'View' to vendors or 'Comment' for collaborators; do NOT share editing access to all vendors.
+
+Save as .xlsx. Keep one example row and one blank row for each vendor type.

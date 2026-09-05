@@ -1,0 +1,52 @@
+{
+  "artifact_plan": [
+    {
+      "artifact_type": "planning_template",
+      "file_name": "planning-template.md",
+      "file_format": "md",
+      "purpose": "Help the buyer define weekly priorities and milestones.",
+      "is_required": true,
+      "generation_instructions": "Create a concise planning template with headings and fillable prompts."
+    },
+    {
+      "artifact_type": "execution_worksheet",
+      "file_name": "execution-worksheet.md",
+      "file_format": "md",
+      "purpose": "Support daily execution and tracking.",
+      "is_required": true,
+      "generation_instructions": "Create a worksheet with task sections, blockers, and review prompts."
+    },
+    {
+      "artifact_type": "buyer_guide",
+      "file_name": "buyer-guide.md",
+      "file_format": "md",
+      "purpose": "Explain how to use the toolkit effectively.",
+      "is_required": true,
+      "generation_instructions": "Write a short usage guide with setup and workflow steps."
+    }
+  ],
+  "artifacts": [
+    {
+      "artifact_type": "planning_template",
+      "file_path": "data/runs/run_etsy_planners/planning-template.md",
+      "file_format": "md",
+      "is_required": true,
+      "generation_status": "generated"
+    },
+    {
+      "artifact_type": "execution_worksheet",
+      "file_path": "data/runs/run_etsy_planners/execution-worksheet.md",
+      "file_format": "md",
+      "is_required": true,
+      "generation_status": "generated"
+    },
+    {
+      "artifact_type": "buyer_guide",
+      "file_path": "data/runs/run_etsy_planners/buyer-guide.md",
+      "file_format": "md",
+      "is_required": true,
+      "generation_status": "generated"
+    }
+  ],
+  "validation_findings": []
+}

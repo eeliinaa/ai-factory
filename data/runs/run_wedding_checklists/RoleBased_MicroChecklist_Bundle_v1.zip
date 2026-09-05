@@ -1,0 +1,28 @@
+Package contents overview (to be archived as RoleBased_MicroChecklist_Bundle_v1.zip)
+
+Root folder: RoleBased_MicroChecklist_v1/
+- pdf/RoleBased_MicroChecklist_MainTemplates_v1.pdf
+- pdf/RoleBased_MicroChecklist_ExampleFilled_v1.pdf
+- pdf/RoleBased_MicroChecklist_QuickTips_v1.pdf (optional)
+- canva/RoleBased_MicroChecklist_CanvaTemplate_v1.canva
+- canva/RoleBased_MicroChecklist_ColorVariant_Pastel.canva (optional)
+- pngs/bride.png
+- pngs/groom.png
+- pngs/moh.png
+- pngs/bm.png
+- pngs/parents.png
+- pngs/vendors.png
+- docs/how_to_use.md
+- docs/included_files.md
+- docs/key_benefits.md
+- docs/delivery_notes.md
+- preview/preview_assets_manifest.json
+- package/final_manifest.json
+
+Packaging checklist (to validate before zip creation):
+- No temp files (.DS_Store, Thumbs.db) present
+- Path names deterministic and lowercase where specified
+- final_manifest.json and included_files.md entries match actual contents
+- ZIP opens and files extract successfully
+
+Note: Replace this placeholder with the actual binary ZIP during build. This field stores the packaging instructions and expected structure.

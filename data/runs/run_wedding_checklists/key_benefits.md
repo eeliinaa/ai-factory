@@ -1,0 +1,8 @@
+- Organize your entire wedding in one place: 30-week timeline, weekly checklists, vendor tracker, and budget snapshot.
+- Editable formats: perfect for Excel or Google Sheets collaboration with partners and vendors.
+- Fillable PDF and printables for quick, on-the-go meetings and vendor visits.
+- Vendor payment tracking keeps deposits and balances clear and on schedule.
+- Example-filled timeline shows realistic milestones so you can copy proven workflows.
+- Save time: actionable weekly tasks reduce last-minute stress and spread work across months.
+- Reusable template: easily adapt for shorter or longer timelines for other events.
+- Simple, print-friendly layout prioritizes clarity and handwriting space for meeting notes.

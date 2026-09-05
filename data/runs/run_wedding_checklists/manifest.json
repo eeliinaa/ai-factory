@@ -1,0 +1,253 @@
+{
+  "artifact_plan": [
+    {
+      "artifact_type": "main_fillable_pdf",
+      "file_name": "30-week-wedding-planner-fillable.pdf",
+      "file_format": "pdf",
+      "purpose": "Primary printable, fillable planner containing 30-week timeline overview, monthly pages, weekly checklist pages and single-day checklist sections; optimized for A4 and US Letter.",
+      "is_required": true,
+      "generation_instructions": "Create a print-ready, fillable PDF with named form fields. Include: cover/title page, key dates & contacts, 30-week timeline overview (rows per week with 3\u20136 action slots), monthly overview pages (month name header + top 4\u20135 goals), weekly checklist pages (repeatable template), and a single-page printable vendor contact & payments tracker and budget snapshot. Use clear typography, adequate margins for printing, 1\u20132 accent colors, and export as both A4 and US Letter. Ensure field names match spreadsheet columns where applicable."
+    },
+    {
+      "artifact_type": "editable_spreadsheet_master",
+      "file_name": "30-week-wedding-planner-template.xlsx",
+      "file_format": "xlsx",
+      "purpose": "Master editable source spreadsheet with tabs for timeline, monthly checklist, weekly checklist, vendor tracker, budget snapshot, and example filled data.",
+      "is_required": true,
+      "generation_instructions": "Produce a single .xlsx file with these tabs: '30-Week Timeline' (auto-calc week numbers/dates from wedding date input, columns: week_no, start_date, end_date, key_tasks, priority), 'Monthly Overview' (month name, top goals), 'Weekly Checklist' (repeating template with checkboxes/status column), 'Vendors' (vendor, contact, contract signed Y/N, deposit, balance, due date), 'Budget' (category, budgeted, actual, remaining formulas), 'Example Filled' (sample data showing a realistic timeline). Add simple formulas (SUM for budget, conditional formatting for overdue payments), dropdowns for status, and comments with usage tips. Use clean column names to map to PDF fields."
+    },
+    {
+      "artifact_type": "google_sheets_setup_instructions",
+      "file_name": "google-sheets-setup.txt",
+      "file_format": "txt",
+      "purpose": "Step-by-step instructions for buyer to create a Google Sheets copy from the XLSX and set sharing permissions; includes shorthand for importing to Google Drive and recommended view/edit settings.",
+      "is_required": true,
+      "generation_instructions": "Write concise, numbered steps: how to upload the XLSX to Google Drive, open with Google Sheets, make a copy, set drop-down/checkbox equivalents, and enable offline editing. Provide troubleshooting tips (date issues, formula compatibility) and recommended folder organization. Include a short note: 'If you prefer, reply for a personalized Google Sheets share for an additional service.'"
+    },
+    {
+      "artifact_type": "example_filled_timeline_pdf",
+      "file_name": "example-filled-30-week-timeline.pdf",
+      "file_format": "pdf",
+      "purpose": "Demonstration file showing a realistic, example-filled timeline so buyers can see how to use the template and what a completed schedule looks like.",
+      "is_required": true,
+      "generation_instructions": "Populate the template with realistic sample entries (vendor booking, dress fittings, invites timeline, payment milestones). Ensure sample dates correspond to a hypothetical wedding date 30 weeks out. Emphasize clarity and show how weekly tasks roll into monthly goals."
+    },
+    {
+      "artifact_type": "vendor_tracker_sheet_pdf",
+      "file_name": "vendor-payments-tracker.pdf",
+      "file_format": "pdf",
+      "purpose": "Printable vendor contact & payments tracker derived from spreadsheet for quick physical reference at meetings.",
+      "is_required": true,
+      "generation_instructions": "Export the 'Vendors' tab as a single-page printable PDF with columns: Vendor, Role, Contact, Contract Signed (Y/N), Deposit, Balance, Due Date, Notes. Use clear spacing to allow handwritten notes when printed."
+    },
+    {
+      "artifact_type": "instruction_file",
+      "file_name": "how_to_use.md",
+      "file_format": "md",
+      "purpose": "Buyer-facing step-by-step usage guide covering PDF fillable fields, spreadsheet editing, printing tips, and quick-start checklist.",
+      "is_required": true,
+      "generation_instructions": "Write a friendly, concise guide (approx. 300\u2013600 words) including: quick-start (how to pick a wedding date and generate weeks), editing tips for PDF vs spreadsheet, printing recommendations (paper size, bleed), how to use the example file, and common FAQs (date formats, formula quirks). Include short screenshots or placeholder notes indicating where screenshots can be added later."
+    },
+    {
+      "artifact_type": "included_files_list",
+      "file_name": "included_files.md",
+      "file_format": "md",
+      "purpose": "Clear manifest for buyers listing each file in the bundle and its purpose.",
+      "is_required": true,
+      "generation_instructions": "Produce a short bullet list mapping file names to descriptions and recommended use (edit, print, example). Include a note on license/usage (personal use, resell restrictions)."
+    },
+    {
+      "artifact_type": "key_benefits",
+      "file_name": "key_benefits.md",
+      "file_format": "md",
+      "purpose": "Concise buyer-facing benefits list used in listing and preview overlays.",
+      "is_required": true,
+      "generation_instructions": "Generate 6\u20138 short benefit bullets (one-liners) highlighting speed-to-organize, editable formats, printable checklists, vendor payment clarity, budget snapshot, and repeatable template for other timeline lengths."
+    },
+    {
+      "artifact_type": "etsy_title",
+      "file_name": "etsy_title.txt",
+      "file_format": "txt",
+      "purpose": "SEO-optimized Etsy title for the listing.",
+      "is_required": true,
+      "generation_instructions": "Produce a single title <=140 characters including top keywords: 'Editable 30-Week Wedding Planner Timeline Checklist Bundle, Fillable PDF & Excel Spreadsheet, Vendor Tracker'. Ensure clarity and keyword density for 'wedding planner', 'timeline', 'checklist', 'fillable', 'editable'."
+    },
+    {
+      "artifact_type": "etsy_description",
+      "file_name": "etsy_description.md",
+      "file_format": "md",
+      "purpose": "Full Etsy product description covering the product summary, what's included, how to use, file delivery details, and license information.",
+      "is_required": true,
+      "generation_instructions": "Write a 300\u2013600 word description with sections: Quick Summary, What\u2019s Included (bullet list), How to Use (short steps), File Formats & Compatibility, Printing Tips, Licensing & Refunds, and a short SEO paragraph with secondary keywords (wedding timeline, printable wedding planner). Keep friendly, scannable formatting with headings and bullets."
+    },
+    {
+      "artifact_type": "etsy_tags",
+      "file_name": "etsy_tags.txt",
+      "file_format": "txt",
+      "purpose": "List of 13 suggested Etsy tags/keywords for the listing.",
+      "is_required": true,
+      "generation_instructions": "Generate up to 13 relevant tags separated by commas or newlines. Prioritize high-intent phrases like 'wedding timeline', 'editable wedding planner', 'wedding checklist', 'fillable PDF wedding', 'wedding planner printable', 'wedding vendor tracker'. Avoid punctuation and keep tags within Etsy limits."
+    },
+    {
+      "artifact_type": "preview_plan",
+      "file_name": "preview_plan.md",
+      "file_format": "md",
+      "purpose": "Guidance for creating the 5 preview images and copy overlays needed for Etsy listing previews.",
+      "is_required": true,
+      "generation_instructions": "Specify five preview images: 1) Cover mockup with product title and 1\u20132 benefit bullets, 2) 30-week timeline zoom (show weeks 1\u20136) with overlay '30-week breakdown', 3) Spreadsheet screenshot showing vendor tracker and budget with overlay 'Editable Excel + Google Sheets', 4) Example filled timeline page with overlay 'Example Filled', 5) Printables grid showing checklist pages and 'Instant Download'. For each image include recommended crop (2000x2000 px), suggested overlay text (max 10 words), and alt-text for accessibility."
+    },
+    {
+      "artifact_type": "preview_assets_manifest",
+      "file_name": "preview_assets_manifest.json",
+      "file_format": "json",
+      "purpose": "Structured manifest listing required preview image assets, placeholders, and copy snippets for designers.",
+      "is_required": true,
+      "generation_instructions": "Produce JSON listing each preview slot: filename, dimensions, required screenshot source (PDF page or spreadsheet tab), overlay text, background color suggestions, and whether a mockup (phone/desktop) is preferred. Include fonts and accent color hex codes used in the product."
+    },
+    {
+      "artifact_type": "final_manifest",
+      "file_name": "final_manifest.json",
+      "file_format": "json",
+      "purpose": "Machine-readable manifest mapping all generated files to their path inside the final bundle and marking required files.",
+      "is_required": true,
+      "generation_instructions": "Generate JSON array objects with fields: file_name, relative_path, file_format, artifact_type, is_required, file_size_estimate_bytes (placeholder allowed). Ensure the manifest matches included_files.md entries."
+    },
+    {
+      "artifact_type": "final_bundle_zip",
+      "file_name": "editable-30-week-wedding-planner-bundle.zip",
+      "file_format": "zip",
+      "purpose": "Final packaged ZIP ready for Etsy upload containing all deliverables in the specified folder structure.",
+      "is_required": true,
+      "generation_instructions": "Create a deterministic ZIP with root folder named 'Editable-30-Week-Wedding-Planner-Bundle'. Include subfolders: /editable/ (XLSX), /printable/ (fillable PDF, example PDF), /docs/ (how_to_use.md, included_files.md, key_benefits.md), /listing/ (etsy_title.txt, etsy_description.md, etsy_tags.txt), /preview/ (preview_plan.md, preview_assets_manifest.json), and final_manifest.json. Validate that filenames match the manifest and that no filenames contain disallowed characters. Ensure ZIP is non-empty and under typical Etsy size limits (recommend <100MB)."
+    }
+  ],
+  "artifacts": [
+    {
+      "artifact_type": "main_fillable_pdf",
+      "file_path": "data/runs/run_wedding_checklists/30-week-wedding-planner-fillable.pdf.md",
+      "file_format": "md",
+      "is_required": true,
+      "generation_status": "generated"
+    },
+    {
+      "artifact_type": "editable_spreadsheet_master",
+      "file_path": "data/runs/run_wedding_checklists/30-week-wedding-planner-template.xlsx.txt",
+      "file_format": "txt",
+      "is_required": true,
+      "generation_status": "generated"
+    },
+    {
+      "artifact_type": "google_sheets_setup_instructions",
+      "file_path": "data/runs/run_wedding_checklists/google-sheets-setup.txt",
+      "file_format": "txt",
+      "is_required": true,
+      "generation_status": "generated"
+    },
+    {
+      "artifact_type": "example_filled_timeline_pdf",
+      "file_path": "data/runs/run_wedding_checklists/example-filled-30-week-timeline.pdf.md",
+      "file_format": "md",
+      "is_required": true,
+      "generation_status": "generated"
+    },
+    {
+      "artifact_type": "vendor_tracker_sheet_pdf",
+      "file_path": "data/runs/run_wedding_checklists/vendor-payments-tracker.pdf.md",
+      "file_format": "md",
+      "is_required": true,
+      "generation_status": "generated"
+    },
+    {
+      "artifact_type": "instruction_file",
+      "file_path": "data/runs/run_wedding_checklists/how_to_use.md",
+      "file_format": "md",
+      "is_required": true,
+      "generation_status": "generated"
+    },
+    {
+      "artifact_type": "included_files_list",
+      "file_path": "data/runs/run_wedding_checklists/included_files.md",
+      "file_format": "md",
+      "is_required": true,
+      "generation_status": "generated"
+    },
+    {
+      "artifact_type": "key_benefits",
+      "file_path": "data/runs/run_wedding_checklists/key_benefits.md",
+      "file_format": "md",
+      "is_required": true,
+      "generation_status": "generated"
+    },
+    {
+      "artifact_type": "etsy_title",
+      "file_path": "data/runs/run_wedding_checklists/etsy_title.txt",
+      "file_format": "txt",
+      "is_required": true,
+      "generation_status": "generated"
+    },
+    {
+      "artifact_type": "etsy_description",
+      "file_path": "data/runs/run_wedding_checklists/etsy_description.md",
+      "file_format": "md",
+      "is_required": true,
+      "generation_status": "generated"
+    },
+    {
+      "artifact_type": "etsy_tags",
+      "file_path": "data/runs/run_wedding_checklists/etsy_tags.txt",
+      "file_format": "txt",
+      "is_required": true,
+      "generation_status": "generated"
+    },
+    {
+      "artifact_type": "preview_plan",
+      "file_path": "data/runs/run_wedding_checklists/preview_plan.md",
+      "file_format": "md",
+      "is_required": true,
+      "generation_status": "generated"
+    },
+    {
+      "artifact_type": "preview_assets_manifest",
+      "file_path": "data/runs/run_wedding_checklists/preview_assets_manifest.json",
+      "file_format": "json",
+      "is_required": true,
+      "generation_status": "generated"
+    },
+    {
+      "artifact_type": "final_manifest",
+      "file_path": "data/runs/run_wedding_checklists/final_manifest.json",
+      "file_format": "json",
+      "is_required": true,
+      "generation_status": "generated"
+    },
+    {
+      "artifact_type": "final_bundle_zip",
+      "file_path": "data/runs/run_wedding_checklists/editable-30-week-wedding-planner-bundle.zip.md",
+      "file_format": "md",
+      "is_required": true,
+      "generation_status": "generated"
+    }
+  ],
+  "validation_findings": [],
+  "package": {
+    "package_path": "data/runs/run_wedding_checklists/package-ready",
+    "zip_path": "data/runs/run_wedding_checklists/package-ready/deliverables.zip",
+    "copied_files": [
+      "30-week-wedding-planner-fillable.pdf.md",
+      "30-week-wedding-planner-template.xlsx.txt",
+      "google-sheets-setup.txt",
+      "example-filled-30-week-timeline.pdf.md",
+      "vendor-payments-tracker.pdf.md",
+      "how_to_use.md",
+      "included_files.md",
+      "key_benefits.md",
+      "etsy_title.txt",
+      "etsy_description.md",
+      "etsy_tags.txt",
+      "preview_plan.md",
+      "preview_assets_manifest.json",
+      "final_manifest.json",
+      "editable-30-week-wedding-planner-bundle.zip.md"
+    ]
+  }
+}

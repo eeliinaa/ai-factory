@@ -1,0 +1,23 @@
+{
+  "files": [
+    { "name": "week-of-checklist__printable_A4_USLetter_v1.pdf", "path": "product/week-of-checklist__printable_A4_USLetter_v1.pdf", "size_bytes": 0, "required": true, "purpose": "Printable 30-day checklist (A4 & US Letter)" },
+    { "name": "day-of-hour-by-hour-timeline__printable_A4_USLetter_v1.pdf", "path": "product/day-of-hour-by-hour-timeline__printable_A4_USLetter_v1.pdf", "size_bytes": 0, "required": true, "purpose": "Hour-by-hour timeline template" },
+    { "name": "vendor-contact-sheet__fillable_A4_USLetter_v1.pdf", "path": "product/vendor-contact-sheet__fillable_A4_USLetter_v1.pdf", "size_bytes": 0, "required": true, "purpose": "Interactive vendor contact PDF" },
+    { "name": "day-of-emergency-kit__printable_A4_USLetter_v1.pdf", "path": "product/day-of-emergency-kit__printable_A4_USLetter_v1.pdf", "size_bytes": 0, "required": true, "purpose": "Emergency kit checklist" },
+    { "name": "vendor-contacts_template_v1.xlsx", "path": "product/vendor-contacts_template_v1.xlsx", "size_bytes": 0, "required": true, "purpose": "Editable vendor contacts spreadsheet" },
+    { "name": "example-filled_week-of-day-of-set_v1.pdf", "path": "product/example-filled_week-of-day-of-set_v1.pdf", "size_bytes": 0, "required": true, "purpose": "Example-filled preview" },
+    { "name": "etsy_title_v1.txt", "path": "listing/etsy_title_v1.txt", "size_bytes": 0, "required": true, "purpose": "Etsy title draft" },
+    { "name": "etsy_description_v1.md", "path": "listing/etsy_description_v1.md", "size_bytes": 0, "required": true, "purpose": "Etsy description draft" },
+    { "name": "etsy_tags_v1.txt", "path": "listing/etsy_tags_v1.txt", "size_bytes": 0, "required": true, "purpose": "Suggested Etsy tags" },
+    { "name": "preview_thumbnail_v1.png", "path": "preview/preview_thumbnail_v1.png", "size_bytes": 0, "required": true, "purpose": "Primary thumbnail image" },
+    { "name": "preview_in-use_mockup_v1.png", "path": "preview/preview_in-use_mockup_v1.png", "size_bytes": 0, "required": false, "purpose": "Lifestyle mockup (optional)" },
+    { "name": "preview_flatlay_contents_v1.png", "path": "preview/preview_flatlay_contents_v1.png", "size_bytes": 0, "required": true, "purpose": "Flat-lay contents image" },
+    { "name": "preview_plan_v1.md", "path": "preview/preview_plan_v1.md", "size_bytes": 0, "required": true, "purpose": "Preview image plan and copy" },
+    { "name": "final_manifest_v1.json", "path": "package/final_manifest_v1.json", "size_bytes": 0, "required": true, "purpose": "Machine-readable manifest" },
+    { "name": "delivery_notes_v1.md", "path": "package/delivery_notes_v1.md", "size_bytes": 0, "required": true, "purpose": "Buyer delivery instructions" },
+    { "name": "week-of-day-of-wedding-kit_final_bundle_v1.zip", "path": "package/week-of-day-of-wedding-kit_final_bundle_v1.zip", "size_bytes": 0, "required": true, "purpose": "Final zipped bundle" },
+    { "name": "technical_qa_report_v1.json", "path": "package/technical_qa_report_v1.json", "size_bytes": 0, "required": true, "purpose": "Technical QA report" },
+    { "name": "how_to_use__quickstart_v1.md", "path": "product/how_to_use__quickstart_v1.md", "size_bytes": 0, "required": true, "purpose": "Quickstart how-to guide" },
+    { "name": "support_readme_v1.md", "path": "support/support_readme_v1.md", "size_bytes": 0, "required": true, "purpose": "Internal reviewer checklist" }
+  ]
+}

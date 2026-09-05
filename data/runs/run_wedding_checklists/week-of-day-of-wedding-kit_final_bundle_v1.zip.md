@@ -1,0 +1,2 @@
+FINAL BUNDLE (placeholder)
+This entry represents the final delivery ZIP created at packaging time. The ZIP should contain the following top-level folders and files: product/, listing/, preview/, package/, support/. Ensure final_manifest_v1.json and included_files_list_v1.md match exact contents before zipping. No executables should be included. The actual binary ZIP will be generated during packaging.

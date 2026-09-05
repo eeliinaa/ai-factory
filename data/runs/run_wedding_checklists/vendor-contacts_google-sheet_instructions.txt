@@ -1,0 +1,11 @@
+Google Sheet Delivery Instructions
+
+1) Upload the provided 'vendor-contacts_template_v1.xlsx' to your Google Drive.
+2) Open the file in Google Sheets.
+3) File → Make a copy. Rename the copy to '[WeddingName] Vendor Contacts'.
+4) Update all placeholder rows with your vendor details.
+5) To share with vendors: Click Share → Enter vendor email addresses → Set permission to 'Viewer' or 'Commenter' (recommended: Viewer for vendors, Editor for planner).
+6) If you want vendors to update their own arrival times, grant 'Commenter' or 'Editor' carefully. Consider a separate editable tab for vendors.
+7) Replace placeholder in delivery notes: INSERT_GOOGLE_SHEET_LINK_HERE
+
+Security tip: Do not set the sheet to 'Anyone with link can edit' unless necessary. Use expiration dates for access if supported.

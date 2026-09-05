@@ -1,0 +1,37 @@
+Quick steps to set up Google Sheets from the provided XLSX
+
+1) Upload the XLSX
+- Open drive.google.com and sign in.
+- Click + New → File upload. Select '30-week-wedding-planner-template.xlsx'.
+
+2) Open as Google Sheets
+- Once uploaded, right-click the file in Drive → Open with → Google Sheets.
+- Google will create a Sheets version. Review formulas: if any show errors, open File → Version history → See version history to revert or consult notes.
+
+3) Make your own copy
+- In Google Sheets: File → Make a copy. Save it in your preferred folder (e.g., My Drive/Wedding Planner).
+- Rename the copy to include your names (e.g., "Alex & Jamie Wedding Planner").
+
+4) Convert checkboxes and dropdowns (if needed)
+- Check the Vendors and Weekly Checklist tabs. For 'completed' columns, select cells → Insert → Checkbox.
+- For 'status' dropdowns: Data → Data validation → Criteria: List of items: Not started, In progress, Done.
+
+5) Set date locales/formats
+- If dates appear wrong: File → Spreadsheet settings → Locale / Time zone. Choose your country.
+- Change column format: Format → Number → Date (or Custom date/time).
+
+6) Enable offline access (optional)
+- In Drive: Settings (gear) → General → Offline → Turn on. Then open the sheet while online to cache it for offline use.
+
+7) Share & permissions
+- Click Share → Enter email addresses for collaborators.
+- Permission tips: Give 'Editor' access to your planner partner, 'Comment' to vendors if you want feedback only.
+
+8) Troubleshooting tips
+- If formulas show #VALUE or incorrect dates, check locale and date formats.
+- If conditional formatting looks off, open Format → Conditional formatting and confirm ranges.
+
+9) Want us to set it up for you?
+- Short note you can include in listing: "If you prefer, reply to the order message for a personalised Google Sheets share for an extra fee."
+
+End of instructions.

@@ -1,0 +1,45 @@
+Workbook: 30-Week Wedding Planner Template
+Tabs and primary columns (first row = header):
+
+Tab: 30-Week Timeline
+Headers: week_no, start_date, end_date, key_tasks, priority, notes
+- Usage: enter wedding_date in cell B1 (named cell: wedding_date).
+- Example formula: start_date for week N: =wedding_date - ((week_no-1)*7)  (adjust formula depending on counting direction)
+- Alternate auto-fill: Add helper column 'weeks_before' with value =ROW()-1 then start_date = DATE(YEAR(wedding_date),MONTH(wedding_date),DAY(wedding_date) - (weeks_before*7)).
+
+Tab: Monthly Overview
+Headers: month_name, top_goal_1, top_goal_2, top_goal_3, top_goal_4, top_goal_5, notes
+- Use dropdown for month_name (Jan..Dec).
+
+Tab: Weekly Checklist
+Headers: week_no, item_no, task_description, assigned_to, due_date, status, completed (checkbox), notes
+- Data validation for status: Not started / In progress / Done
+- Conditional formatting: completed=true -> strike-through or green fill
+
+Tab: Vendors
+Headers: vendor_id, vendor_name, role, contact_name, phone, email, contract_signed, deposit, balance, total, deposit_date, balance_due_date, notes
+- Formulas: total = deposit + balance (or manual)
+- Conditional formatting: balance > 0 and TODAY() > balance_due_date -> red fill
+- Dropdowns: contract_signed: Yes/No
+
+Tab: Budget
+Headers: category, budgeted, actual, remaining
+- Formula: remaining = budgeted - actual
+- At bottom: =SUM(budgeted), =SUM(actual), =SUM(remaining)
+
+Tab: Example Filled
+- Contains a sample wedding date cell: wedding_date = 2026-12-15 (example)
+- Example rows for timeline and weekly checklist showing task examples: Book venue, Hire photographer, Send save-the-dates, Dress fitting.
+
+Sheet features and notes for conversion to Google Sheets:
+- Use standard formulas compatible with Excel and Google Sheets (SUM, IF, TODAY, DATE arithmetic).
+- Avoid VBA/macros.
+- Provide named ranges: wedding_date, timeline_table, vendors_table, budget_table.
+- Add cell comments with usage tips (e.g., "Enter wedding date here; timeline will populate backwards 30 weeks").
+
+Sample snippet (Weekly Checklist) CSV-like preview:
+week_no,item_no,task_description,assigned_to,due_date,status,completed,notes
+12,1,"Confirm final guest count",Bride,2026-10-15,"In progress",FALSE,"Call caterer"
+12,2,"Final dress fitting",Bride,2026-10-18,"Not started",FALSE,"Bring shoes"
+
+Delivery note: this .xlsx is the master editable source file. Column names use plain ASCII and map to PDF field names where applicable (e.g., vendor_name -> vendor_name_1).

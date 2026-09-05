@@ -1,0 +1,19 @@
+{
+  "bundle_name": "Editable-30-Week-Wedding-Planner-Bundle",
+  "files": [
+    {"file_name": "editable/30-week-wedding-planner-template.xlsx", "relative_path": "editable/30-week-wedding-planner-template.xlsx", "file_format": "xlsx", "artifact_type": "editable_spreadsheet_master", "is_required": true, "file_size_estimate_bytes": 120000},
+    {"file_name": "printable/30-week-wedding-planner-fillable-A4.pdf", "relative_path": "printable/30-week-wedding-planner-fillable-A4.pdf", "file_format": "pdf", "artifact_type": "main_fillable_pdf", "is_required": true, "file_size_estimate_bytes": 600000},
+    {"file_name": "printable/30-week-wedding-planner-fillable-USLetter.pdf", "relative_path": "printable/30-week-wedding-planner-fillable-USLetter.pdf", "file_format": "pdf", "artifact_type": "main_fillable_pdf", "is_required": true, "file_size_estimate_bytes": 600000},
+    {"file_name": "printable/example-filled-30-week-timeline.pdf", "relative_path": "printable/example-filled-30-week-timeline.pdf", "file_format": "pdf", "artifact_type": "example_filled_timeline_pdf", "is_required": true, "file_size_estimate_bytes": 200000},
+    {"file_name": "printable/vendor-payments-tracker.pdf", "relative_path": "printable/vendor-payments-tracker.pdf", "file_format": "pdf", "artifact_type": "vendor_tracker_sheet_pdf", "is_required": true, "file_size_estimate_bytes": 50000},
+    {"file_name": "docs/how_to_use.md", "relative_path": "docs/how_to_use.md", "file_format": "md", "artifact_type": "instruction_file", "is_required": true, "file_size_estimate_bytes": 15000},
+    {"file_name": "docs/included_files.md", "relative_path": "docs/included_files.md", "file_format": "md", "artifact_type": "included_files_list", "is_required": true, "file_size_estimate_bytes": 5000},
+    {"file_name": "docs/key_benefits.md", "relative_path": "docs/key_benefits.md", "file_format": "md", "artifact_type": "key_benefits", "is_required": true, "file_size_estimate_bytes": 3000},
+    {"file_name": "listing/etsy_title.txt", "relative_path": "listing/etsy_title.txt", "file_format": "txt", "artifact_type": "etsy_title", "is_required": true, "file_size_estimate_bytes": 200},
+    {"file_name": "listing/etsy_description.md", "relative_path": "listing/etsy_description.md", "file_format": "md", "artifact_type": "etsy_description", "is_required": true, "file_size_estimate_bytes": 25000},
+    {"file_name": "listing/etsy_tags.txt", "relative_path": "listing/etsy_tags.txt", "file_format": "txt", "artifact_type": "etsy_tags", "is_required": true, "file_size_estimate_bytes": 500},
+    {"file_name": "preview/preview_plan.md", "relative_path": "preview/preview_plan.md", "file_format": "md", "artifact_type": "preview_plan", "is_required": true, "file_size_estimate_bytes": 5000},
+    {"file_name": "preview/preview_assets_manifest.json", "relative_path": "preview/preview_assets_manifest.json", "file_format": "json", "artifact_type": "preview_assets_manifest", "is_required": true, "file_size_estimate_bytes": 4000},
+    {"file_name": "final_manifest.json", "relative_path": "final_manifest.json", "file_format": "json", "artifact_type": "final_manifest", "is_required": true, "file_size_estimate_bytes": 2500}
+  ]
+}

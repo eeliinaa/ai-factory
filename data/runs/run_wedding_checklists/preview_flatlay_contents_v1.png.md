@@ -1,0 +1,2 @@
+PLACEHOLDER PNG: Flat-lay of bundle contents (2000x1333)
+Design notes: Arrange thumbnails of printed PDFs, a laptop showing vendor spreadsheet, and the emergency kit checklist. Add small overlay label 'Printable + Editable'. Provide source PSD or mockup instructions for final design.

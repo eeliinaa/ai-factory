@@ -1,0 +1,2 @@
+PLACEHOLDER PNG (optional lifestyle mockup)
+Design notes: Photo of planner or hands holding the day-of timeline. Focus on readable time blocks and a natural scene. If automated generation not possible, include instructions for designer: use model release images or stock with license. Size: 2000x1333.

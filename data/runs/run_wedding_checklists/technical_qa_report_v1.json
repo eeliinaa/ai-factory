@@ -1,0 +1,22 @@
+{
+  "technical_checks": {
+    "files_present": true,
+    "missing_files": [],
+    "pdf_non_empty_checks": {
+      "week-of-checklist__printable_A4_USLetter_v1.pdf": "pass",
+      "day-of-hour-by-hour-timeline__printable_A4_USLetter_v1.pdf": "pass",
+      "vendor-contact-sheet__fillable_A4_USLetter_v1.pdf": "pass",
+      "day-of-emergency-kit__printable_A4_USLetter_v1.pdf": "pass",
+      "example-filled_week-of-day-of-set_v1.pdf": "pass"
+    },
+    "image_checks": {
+      "preview_thumbnail_v1.png": "pass",
+      "preview_flatlay_contents_v1.png": "pass",
+      "preview_in-use_mockup_v1.png": "optional_missing"
+    },
+    "manifest_alignment": "pass",
+    "xlsx_check": "pass",
+    "zip_creation": "pending"
+  },
+  "summary": "Technical QA completed: core files present and basic checks passed. Packaging (ZIP creation) pending. One optional preview image missing; mark as optional or replace with final design."
+}

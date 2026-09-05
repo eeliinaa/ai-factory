@@ -1,0 +1,64 @@
+{
+  "previews": [
+    {
+      "slot": 1,
+      "filename": "preview_cover_mockup.jpg",
+      "dimensions": "2000x2000",
+      "source": "PDF: cover page",
+      "overlay_text": "Editable 30-Week Wedding Planner",
+      "background_suggested": "#FFFFFF",
+      "font": "Montserrat or Arial",
+      "accent_colors": ["#2B7A78","#F2C57C"],
+      "mockup_preference": "binder_flatlay",
+      "alt_text": "Editable 30-week wedding planner cover"
+    },
+    {
+      "slot": 2,
+      "filename": "preview_timeline_zoom.jpg",
+      "dimensions": "2000x2000",
+      "source": "PDF: timeline page (weeks 1-6 zoom)",
+      "overlay_text": "30-week breakdown",
+      "background_suggested": "#FAFAFA",
+      "font": "Montserrat Bold",
+      "accent_colors": ["#2B7A78"],
+      "mockup_preference": "flat_closeup",
+      "alt_text": "30-week timeline overview showing weekly tasks"
+    },
+    {
+      "slot": 3,
+      "filename": "preview_spreadsheet.jpg",
+      "dimensions": "2000x2000",
+      "source": "Spreadsheet: Vendors + Budget tabs",
+      "overlay_text": "Editable Excel + Google Sheets",
+      "background_suggested": "#FFFFFF",
+      "font": "Arial",
+      "accent_colors": ["#F2C57C"],
+      "mockup_preference": "desktop_screen",
+      "alt_text": "Spreadsheet vendor tracker and budget snapshot"
+    },
+    {
+      "slot": 4,
+      "filename": "preview_example_filled.jpg",
+      "dimensions": "2000x2000",
+      "source": "PDF: example-filled timeline page",
+      "overlay_text": "Example Filled",
+      "background_suggested": "#FFFFFF",
+      "font": "Montserrat",
+      "accent_colors": ["#2B7A78"],
+      "mockup_preference": "paper_flatlay",
+      "alt_text": "Example filled 30-week wedding timeline"
+    },
+    {
+      "slot": 5,
+      "filename": "preview_printables_grid.jpg",
+      "dimensions": "2000x2000",
+      "source": "PDF: checklist pages, vendor tracker, budget",
+      "overlay_text": "Instant Download",
+      "background_suggested": "#F7F7F7",
+      "font": "Montserrat",
+      "accent_colors": ["#2B7A78","#F2C57C"],
+      "mockup_preference": "grid",
+      "alt_text": "Printable wedding checklists and trackers"
+    }
+  ]
+}

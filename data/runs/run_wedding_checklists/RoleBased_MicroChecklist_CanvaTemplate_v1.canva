@@ -1,0 +1,23 @@
+Canva Template — Authoring notes & editable structure
+
+File overview:
+- Pages: 7 (Cover + Bride + Groom + Maid of Honor + Best Man + Parents + Vendors)
+- Page size: US Letter (8.5x11) default; include A4 variant page at end
+- Named layers/groups per page: [Header], [Section_24hrs], [Section_Morning], [Section_Ceremony], [Section_Vendor], [Contacts], [Footer]
+
+Fonts (editable):
+- Heading: Playfair Display (or substitute 'Libre Baskerville')
+- Body: Lato Regular
+
+Color swatches (2 default):
+- Light: #FFFFFF (bg), #2C2C2C (text), #D8B4A6 (accent)
+- Dark: #FAF8F6 (bg), #1A1A1A (text), #A1C6D9 (accent)
+
+Components to build and keep editable:
+- Checkbox element (grouped, name=checkbox)
+- Contact block (text fields for name & phone)
+- Time field (editable text)
+- Section title blocks (editable)
+- Optional logo/branding placeholder
+
+Export guidance included in template notes: export PDF print-ready (bleed 0.125in) and PNG social sizes. Provide a separate page with font/source credits and Canva share instructions.

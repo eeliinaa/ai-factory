@@ -1,0 +1,216 @@
+{
+  "run": {
+    "id": "e0e2fcf3-4357-43a2-aa99-fea12fe7321c",
+    "topic": "etsy planners",
+    "status": "completed",
+    "created_at": "2026-09-05T07:46:34.490149+00:00",
+    "output_path": "data/runs/run_etsy_planners",
+    "total_cost": 0.0,
+    "selected_product_type": "TEMPLATE_BUNDLE"
+  },
+  "environment": "development",
+  "final_outcome_reason": "completed",
+  "refinement_cycles_used": 0,
+  "refinement_stop_reason": "qa_passed",
+  "refinement_history": [
+    {
+      "cycle": 0,
+      "targeted_artifacts": [],
+      "qa_outcome": "passed",
+      "findings": [],
+      "decision": "stop",
+      "stop_reason": "qa_passed"
+    }
+  ],
+  "completed_stages": [
+    "research",
+    "evaluation",
+    "product_architecture",
+    "product_creation",
+    "ai_qa",
+    "technical_qa",
+    "final_package",
+    "listing"
+  ],
+  "failures": [],
+  "budget": {
+    "spent_total": 0.0,
+    "spent_by_stage": {
+      "research": 0.0,
+      "evaluation": 0.0,
+      "product_architecture": 0.0,
+      "product_creation": 0.0,
+      "ai_qa": 0.0,
+      "listing": 0.0
+    },
+    "total_limit": 10.0,
+    "research_limit": 4.0,
+    "product_creation_limit": 4.0,
+    "listing_preview_limit": 2.0
+  },
+  "selected_product": {
+    "candidate_id": "candidate-1",
+    "product_type": "TEMPLATE_BUNDLE",
+    "product_title": "Professional Workflow Toolkit",
+    "product_summary": "A practical bundle of reusable workflow templates for planning and delivery.",
+    "buyer_problem": "Professionals need repeatable systems for planning and delivery.",
+    "solution_promise": "Help buyers save time with reusable workflow assets.",
+    "packaging_strategy": "Bundle a planning template, execution worksheet, and buyer guide."
+  },
+  "listing": {
+    "title": "Professional Workflow Toolkit",
+    "description": "[Placeholder AI response] Stage=listing; Model=gpt-5-mini; no OPENAI_API_KEY configured.",
+    "tags": [
+      "workflow",
+      "template",
+      "productivity",
+      "digital download"
+    ],
+    "listing_version": 1
+  },
+  "qa": {
+    "passed": true,
+    "findings": [
+      "[Placeholder AI response] Stage=ai_qa; Model=gpt-5-mini; no OPENAI_API_KEY configured.",
+      "All planned artifacts were generated and validated."
+    ],
+    "ai_findings": [
+      "[Placeholder AI response] Stage=ai_qa; Model=gpt-5-mini; no OPENAI_API_KEY configured."
+    ],
+    "technical_findings": [
+      "All planned artifacts were generated and validated."
+    ]
+  },
+  "packaging": {
+    "package_path": "data/runs/run_etsy_planners/package-ready",
+    "manifest_path": "data/runs/run_etsy_planners/manifest.json"
+  },
+  "artifact_plan": [
+    {
+      "artifact_type": "planning_template",
+      "file_name": "planning-template.md",
+      "file_format": "md",
+      "purpose": "Help the buyer define weekly priorities and milestones.",
+      "is_required": true,
+      "generation_instructions": "Create a concise planning template with headings and fillable prompts."
+    },
+    {
+      "artifact_type": "execution_worksheet",
+      "file_name": "execution-worksheet.md",
+      "file_format": "md",
+      "purpose": "Support daily execution and tracking.",
+      "is_required": true,
+      "generation_instructions": "Create a worksheet with task sections, blockers, and review prompts."
+    },
+    {
+      "artifact_type": "buyer_guide",
+      "file_name": "buyer-guide.md",
+      "file_format": "md",
+      "purpose": "Explain how to use the toolkit effectively.",
+      "is_required": true,
+      "generation_instructions": "Write a short usage guide with setup and workflow steps."
+    }
+  ],
+  "artifacts": [
+    {
+      "artifact_type": "planning_template",
+      "file_path": "data/runs/run_etsy_planners/planning-template.md",
+      "file_format": "md",
+      "is_required": true,
+      "generation_status": "generated"
+    },
+    {
+      "artifact_type": "execution_worksheet",
+      "file_path": "data/runs/run_etsy_planners/execution-worksheet.md",
+      "file_format": "md",
+      "is_required": true,
+      "generation_status": "generated"
+    },
+    {
+      "artifact_type": "buyer_guide",
+      "file_path": "data/runs/run_etsy_planners/buyer-guide.md",
+      "file_format": "md",
+      "is_required": true,
+      "generation_status": "generated"
+    }
+  ],
+  "stage_metadata": {
+    "research": {
+      "model": "gpt-5-mini",
+      "mode": "placeholder",
+      "prompt_version": "research-v1",
+      "attempt": 1,
+      "prompt_tokens": 0,
+      "completion_tokens": 0,
+      "estimated_cost": 0.0,
+      "parsed_successfully": true,
+      "error": null
+    },
+    "evaluation": {
+      "model": "gpt-5-mini",
+      "mode": "placeholder",
+      "prompt_version": "evaluation-v1",
+      "attempt": 1,
+      "prompt_tokens": 0,
+      "completion_tokens": 0,
+      "estimated_cost": 0.0,
+      "parsed_successfully": true,
+      "error": null
+    },
+    "product_architecture": {
+      "model": "gpt-5-mini",
+      "mode": "placeholder",
+      "prompt_version": "product-architecture-v1",
+      "attempt": 1,
+      "prompt_tokens": 0,
+      "completion_tokens": 0,
+      "estimated_cost": 0.0,
+      "parsed_successfully": true,
+      "error": null
+    },
+    "product_creation": {
+      "model": "gpt-5-mini",
+      "mode": "placeholder",
+      "prompt_version": "product-creation-v1",
+      "attempt": 1,
+      "prompt_tokens": 0,
+      "completion_tokens": 0,
+      "estimated_cost": 0.0,
+      "parsed_successfully": true,
+      "error": null
+    },
+    "ai_qa": {
+      "model": "gpt-5-mini",
+      "mode": "placeholder",
+      "prompt_version": "qa-v1",
+      "attempt": 1,
+      "prompt_tokens": 0,
+      "completion_tokens": 0,
+      "estimated_cost": 0.0,
+      "parsed_successfully": true,
+      "error": null
+    },
+    "technical_qa": {
+      "parsed_successfully": true,
+      "error": null,
+      "findings_count": 1
+    },
+    "final_package": {
+      "parsed_successfully": true,
+      "error": null,
+      "manifest_path": "data/runs/run_etsy_planners/manifest.json",
+      "package_path": "data/runs/run_etsy_planners/package-ready"
+    },
+    "listing": {
+      "model": "gpt-5-mini",
+      "mode": "placeholder",
+      "prompt_version": "listing-v1",
+      "attempt": 1,
+      "prompt_tokens": 0,
+      "completion_tokens": 0,
+      "estimated_cost": 0.0,
+      "parsed_successfully": true,
+      "error": null
+    }
+  }
+}
